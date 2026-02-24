@@ -56,3 +56,26 @@ A continuación, se describen las tareas que debes realizar en el framework Lara
 ---
 
 Si tienes preguntas o necesitas asistencia técnica durante la ejecución de esta prueba, comunícate con el contacto que te proporcionó esta tarea. ¡Éxito en la prueba! 😊
+
+---
+
+## **Tareas Completadas por el Candidato (Samir Alejandro Gonzalez Albis)**
+
+A continuación se detallan los cambios y tareas ejecutadas durante la resolución del Backend:
+
+1. **Correcciones Iniciales en Entidades:**
+   - Se solucionó el error `MassAssignmentException` agregando correctamente la propiedad `$fillable` en el modelo `Entidad`.
+   - Implementación limpia de `EntidadController` utilizando `response()->json()` para devolver todas las transacciones solicitadas por Angular.
+
+2. **Relaciones Configuradas:**
+   - Se añadió la relación `Entidad::hasMany()` referenciando los contactos, y en contraparte la dependencia `Contacto::belongsTo()` unida a la entidad respectiva. Ambas relaciones se envían anidadas al frontend gracias al ORM (`with('entidad')`).
+
+3. **CRUD de Contactos (API Restful):**
+   - El controlador `ContactoController` ha sido modificado e incluye todos los métodos del CRUD solicitados.
+   - **Entidad Existente:** Regla de validación `exists:entidades,id` sobre el atributo foráneo, denegando toda petición cuyo ID de entidad destino sea irreal.
+   - **Prevención de Duplicados en Actualización:** Se implementó verificación en `store` y `update`. Se aseguró de no repetir `email` e `identificacion` (`unique:contactos,email,...`), e incluso previniendo repetición obligatoria del atributo `nombre` como sugerencia de optimización del test.
+
+4. **Migraciones Completadas:**
+   - Migración estructurada para agregar los campos solicitados en Contactos: `identificacion`, `apellido` y `cargo`.
+   - La base de datos (SQLite) se encuentra completamente sincronizada e incluye llaves lógicas de unicidad en los esquemas.
+   - Los comentarios de todas las clases y funciones PHP fueron unificados de forma declarativa, formal y puramente funcional, garantizando estándares en este framework.
